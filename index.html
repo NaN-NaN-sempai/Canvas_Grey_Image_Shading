@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grey Image Shading</title>
+        <style>
+            body {
+                padding-bottom: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Image Source:</p>
+
+        <img id="scream" width="50" height="50" src="./images/esfera.png" alt="The Scream">
+        <img id="defaultShading" style="display: none" width="277" height="277" src="./images/degs/defaultShading.png" alt="The Scream">
+        <img id="reverseShading" style="display: none" width="277" height="277" src="./images/degs/reverseShading.png" alt="The Scream">
+        <img id="cellShading" style="display: none" width="277" height="277" src="./images/degs/cellShading 01.png" alt="The Scream">
+        <img id="cellShading2" style="display: none" width="277" height="277" src="./images/degs/cellShading 02.png" alt="The Scream">
+
+        <p>Canvas Source:</p>
+
+        <canvas id="sourceCanvas" width="277" height="277" style="border:1px solid #d3d3d3;"></canvas>
+
+        <p>Shaders:</p>
+
+        <label>Default Shader:</label>
+        <canvas id="c_defaultShading" width="277" height="50" style="border:1px solid #d3d3d3;"></canvas>
+        <label>New Shader:</label>
+        <canvas id="c_newShading" width="277" height="50" style="border:1px solid #d3d3d3;"></canvas>
+        <p>Select Shader:</p>
+        <select id="selectShader">
+            <option value="cellShading2">Cell Shading 2</option>
+            <option value="cellShading">Cell Shading</option>
+            <option value="reverseShading">Reverse</option>
+            <option value="defaultShading">Default</option>
+        </select>
+
+        <p>Execute Shading:</p>
+        <button id="executeShadingButton">Execute</button>
+
+        <p>Result:</p>
+
+        <canvas id="result" width="277" height="277" style="border:1px solid #d3d3d3;"></canvas>
+
+    </body>
+
+    
+    <script>
+        var sourceCanvas = document.getElementById("sourceCanvas");
+    
+        var width = parseInt(sourceCanvas.width);
+        var height = parseInt(sourceCanvas.height);
+    
+        window.onload = function() {
+            var canvas = sourceCanvas;
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("scream");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+            
+            canvas = document.getElementById("c_defaultShading");
+            ctx = canvas.getContext("2d");
+            img = document.getElementById("defaultShading");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+            
+    
+            //setup end shading
+            canvas = document.getElementById("c_newShading");
+            ctx = canvas.getContext("2d");
+            img = document.getElementById("cellShading2");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+        };
+    
+    
+    
+    
+        var getPixelFromCordinate = (canvasQuery, x, y) => {
+            var canvas = document.querySelector(canvasQuery);
+            var ctx = canvas.getContext("2d");
+    
+            var pixel = ctx.getImageData(x, y, 1, 1);
+    
+            return pixel;
+        }
+    
+        var drawPixelFromCordinate = (canvasQuery, x, y, color) => {
+            var canvas = document.querySelector(canvasQuery);
+            var ctx = canvas.getContext("2d");
+    
+            ctx.fillStyle = color;
+            ctx.fillRect( x, y, 1, 1 ); 
+        } 
+    
+    
+        var defaultShaderArray = [];
+        var newShaderArray = [];
+    
+    
+        var setupShadersArray = () => {
+            defaultShaderArray = getShaderValues("#c_defaultShading");
+            newShaderArray = getShaderValues("#c_newShading");
+        }
+    
+        var getShaderValues = (canvasQuery) => {
+            var pixelArray = [];
+    
+            for(i = 0; i < width; i++){
+                var pixel = getPixelFromCordinate(canvasQuery, i, 0);
+    
+                pixelArray.push(pixel.data[0]);
+            }
+            
+            return pixelArray;
+        }
+    
+    
+        var executeShading = () => {
+            setupShadersArray();
+    
+            for(i = 0; i < width; i++){
+    
+                for(j = 0; j < height; j++){
+    
+                    var pixel = getPixelFromCordinate("#sourceCanvas", i, j);
+                    var pData = pixel.data;
+                    var color = pData[0];
+    
+                    var colorIndex = defaultShaderArray.indexOf(color);
+                    
+                    var newColor;
+    
+                    newColor = newShaderArray[colorIndex];
+    
+                    var endColor = "rgba("+newColor+","+newColor+","+newColor+","+(pData[3]/255)+")";
+    
+                    drawPixelFromCordinate("#result", i, j, endColor);
+                    
+                }
+    
+            } 
+        }
+    
+    
+    
+    
+        var copyCanvas = () => {
+            for(i = 0; i < width; i++){
+    
+                for(j = 0; j < height; j++){
+    
+                    var pixel = getPixelFromCordinate("#sourceCanvas", i, j);
+                    var pData = pixel.data;
+    
+                    var pi = 2;
+    
+                    //var color = "rgba("+pData[0]+","+pData[1]+","+pData[2]+","+(pData[3]/255)+")";
+                    var color = "rgba("+pData[pi]+","+pData[pi]+","+pData[pi]+","+(pData[3]/255)+")";
+    
+                    drawPixelFromCordinate("#result", i, j, color);
+                    
+                }
+                
+            } 
+        }
+    
+    
+
+        document.querySelector("#selectShader").addEventListener("input", () => {
+            var value = document.querySelector("#selectShader").value;
+            
+            var canvas = document.getElementById("c_newShading");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById(value);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height); 
+        })
+
+    
+        var canExecute = false;
+        setTimeout(() => {
+            canExecute = true;
+        }, 500);
+    
+        document.querySelector("#executeShadingButton").addEventListener("click", () => {
+            if(canExecute) executeShading();
+        });
+    
+    
+    
+    
+    
+    
+    
+    
+        var passVals = (i,j) => {
+            setTimeout(() => {
+                //drawPixelFromCordinate("#result", i, j, color);
+                var pixel = getPixelFromCordinate("#sourceCanvas", i, j);
+                var pData = pixel.data;
+    
+                var color = "rgba("+pData[0]+","+pData[1]+","+pData[2]+","+(pData[3]/255)+")";
+    
+                drawPixelFromCordinate("#result", i, j, color);
+                console.log(i,j);
+            }, 1);
+        }
+    
+    </script>
+</html>
