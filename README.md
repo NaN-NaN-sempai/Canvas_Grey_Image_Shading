@@ -27,3 +27,6 @@ some example:
    - Linearly from 38.25 to 204 = from ![](https://placehold.co/15x15/444444/444444.png) `Tundora` to ![](https://placehold.co/15x15/afafaf/afafaf.png) `Silver Chalice`
    - Linearly from 204 to 216.75 = from ![](https://placehold.co/15x15/afafaf/afafaf.png) `Silver Chalice` to ![](https://placehold.co/15x15/ffffff/ffffff.png) `White`
    - Big step from 216.75 to 255 = ![](https://placehold.co/15x15/ffffff/ffffff.png) `White`
+   
+This method generate this:
+![](https://nan-nan-sempai.github.io/Canvas_Grey_Image_Shading/images/degs/celShading%2002.png) `Cell Shading 02`
