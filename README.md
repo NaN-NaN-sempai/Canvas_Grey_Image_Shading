@@ -13,7 +13,7 @@ some example:
 - Linearly 255 to 0 = reversed default shading
 - logarithmically 0 to 255 = high or low contrast shading *(depending on the logarithm curve)*
 - Big steps *(like 50)* = Something like a cell shading - Example of how it work:
-  -  0 to 50 = 0 - ![](https://placehold.co/15x15/ffffff/ffffff.png) `Black`
+  -  0 to 50 = 0 - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `Black`
   -  50 to 100 = 50 - ![](https://placehold.co/15x15/cccccc/cccccc.png) `Dark grey`
   -  100 to 150 = 100 - ![](https://placehold.co/15x15/999999/999999.png) `Grey`
   -  150 to 200 = 150 - ![](https://placehold.co/15x15/777777/777777.png) `Light grey`
