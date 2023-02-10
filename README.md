@@ -13,10 +13,10 @@ some example:
 - Linearly 255 to 0 = reversed default shading
 - logarithmically 0 to 255 = high or low contrast shading *(depending on the logarithm curve)*
 - Big steps *(like 50)* = Something like a cell shading - Example of how it work:
-  -  0 to 50 = 0 - ![](https://placehold.co/15x15/000000/000000.png) `Black`
-  -  50 to 100 = 50 - ![](https://placehold.co/15x15/333333/333333.png) `Dark grey`
-  -  100 to 150 = 100 - ![](https://placehold.co/15x15/777777/777777.png) `Grey`
-  -  150 to 200 = 150 - ![#999999](https://placehold.co/15x15/999999/999999.png) `Light grey`
-  -  200 to 250 = 200 - ![#cccccc](https://placehold.co/15x15/cccccc/cccccc.png) `Lighter grey`
-  -  250 to 255 = 255 - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `White` 
+  -  0 to 50 = 0 - ![](https://placehold.co/15x15/ffffff/ffffff.png) `Black`
+  -  50 to 100 = 50 - ![](https://placehold.co/15x15/cccccc/cccccc.png) `Dark grey`
+  -  100 to 150 = 100 - ![](https://placehold.co/15x15/999999/999999.png) `Grey`
+  -  150 to 200 = 150 - ![](https://placehold.co/15x15/777777/777777.png) `Light grey`
+  -  200 to 250 = 200 - ![](https://placehold.co/15x15/333333/333333.png) `Lighter grey`
+  -  250 to 255 = 255 - ![](https://placehold.co/15x15/000000/000000.png) `White` 
  - Ramdom values = creates something like a noise, its suprising how well this works.
