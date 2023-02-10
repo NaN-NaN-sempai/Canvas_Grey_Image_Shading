@@ -21,4 +21,4 @@ some example:
   -  250 to 255 = 255 - ![#ffffff](https://placehold.co/15x15/ffffff/ffffff.png) `White` 
  - Ramdom values = creates something like a noise, its suprising how well this works.
 
-<h1 color="red>teste</h2>
+<h1 color="red">teste</h2>
