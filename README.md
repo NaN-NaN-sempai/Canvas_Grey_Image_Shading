@@ -6,7 +6,7 @@ Basically, there is an **array** with 255 values going linearly from 0 to 255, r
 
 So a algorithm goes thru each pixel of a image reading the value red from it's the rgb value and searching this value on the **array** mentioned previously. The position of the pixel on the **array** is saved and the algorithm get a value from another *array* that saves the new shading to be applyed.
 
-This new array can have any type of organization for the values inside of it, 
+This new *array* can have any type of organization for the values inside of it, 
 some example:
 
 - Linearly 0 to 255 = default shading
