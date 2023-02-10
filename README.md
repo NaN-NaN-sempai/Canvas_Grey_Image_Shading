@@ -11,7 +11,7 @@ some example:
 
 - Linearly 0 to 255 = default shading
 - Linearly 255 to 0 = reversed default shading
-- logarithmically 0 to 255 = high or low contrast shading *(depending on the logarithm curve)*
+- Logarithmically 0 to 255 = high or low contrast shading *(depending on the logarithm curve)*
 - Big steps *(like 50)* = Something like a cell shading - Example of how it work:
   -  0 to 50 = 0 - ![](https://placehold.co/15x15/000000/000000.png) `Black`
   -  50 to 100 = 50 - ![](https://placehold.co/15x15/333333/333333.png) `Dark grey`
@@ -21,8 +21,9 @@ some example:
   -  250 to 255 = 255 - ![](https://placehold.co/15x15/ffffff/ffffff.png) `White` 
  - Ramdom values = creates something like a noise, its suprising how well this works.
 
-<div>
-<img  src="/images/count.png" width="250" >  &nbsp; 
-<img  src="/images/home.png" width="250">  &nbsp;
-<img  src="/images/profile.png" width="250">  &nbsp;
-</div>
+ - And we can use all of the methods mentioned before. A really good cell shading i made was like that:
+   - Big step from 0 to 25.5 =  ![](https://placehold.co/15x15/000000/000000.png) `Black`
+   - Linearly from 25.5 to 38.25 = from ![](https://placehold.co/15x15/000000/000000.png) `Black` to ![](https://placehold.co/15x15/444444/444444.png) `Tundora`
+   - Linearly from 38.25 to 204 = from ![](https://placehold.co/15x15/444444/444444.png) `Tundora` to ![](https://placehold.co/15x15/afafaf/afafaf.png) `Silver Chalice`
+   - Linearly from 204 to 216.75 = from ![](https://placehold.co/15x15/afafaf/afafaf.png) `Silver Chalice` to ![](https://placehold.co/15x15/ffffff/ffffff.png) `White`
+   - Big step from 216.75 to 255 = ![](https://placehold.co/15x15/ffffff/ffffff.png) `White`
